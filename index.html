@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="badge-card">
+  <p class="eyebrow">Secure Access</p>
+  <h1>sign<span>.</span>in</h1>
+
+  <!-- Message banner -->
+  <div id="msg" class="msg"></div>
+
+  <!-- Auth forms (hidden once logged in) -->
+  <div id="authArea">
+    <div class="tabs">
+      <button class="tab active" data-tab="login">Log in</button>
+      <button class="tab" data-tab="register">Register</button>
+    </div>
+
+    <!-- LOGIN -->
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginUser">Username</label>
+        <input type="text" id="loginUser" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+
+    <div id="fingerprintArea" class="hidden">
+      <div class="divider">or</div>
+      <button id="fingerprintBtn" type="button" class="btn btn-ghost">
+        <span class="scan-icon" id="scanIcon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <path d="M12 2a7 7 0 0 0-7 7c0 3 1 5 1 7"/>
+            <path d="M12 2a7 7 0 0 1 7 7c0 2-.2 3.5-.6 5"/>
+            <path d="M8 9a4 4 0 0 1 8 0c0 4 1 6 2 8"/>
+            <path d="M12 9v3c0 3 1 5 3 7"/>
+            <path d="M8 9c0 5 .5 8 3 10"/>
+            <span class="sweep"></span>
+          </svg>
+        </span>
+        <span id="fpLabel">Sign in with fingerprint</span>
+      </button>
+    </div>
+
+    <!-- REGISTER -->
+    <form id="registerForm" class="hidden">
+      <div class="field">
+        <label for="regUser">Choose a username</label>
+        <input type="text" id="regUser" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="regPass">Choose a password</label>
+        <input type="password" id="regPass" autocomplete="new-password" required minlength="8">
+      </div>
+      <button type="submit" class="btn btn-primary">Create account</button>
+    </form>
+
+    <p class="foot-note">Fingerprint sign-in is set up per device, right after your first password login, and uses your device's own biometric hardware — nothing biometric is ever sent to the server.</p>
+  </div>
+
+  <!-- Logged-in session view -->
+  <div id="sessionArea" class="session hidden">
+    <p class="eyebrow">Signed in as</p>
+    <p class="who" id="whoAmI"></p>
+    <p class="sub">Session active on this device</p>
+
+    <button id="enableFpBtn" class="btn btn-ghost hidden">
+      <span class="scan-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 1 5 1 7"/><path d="M12 2a7 7 0 0 1 7 7c0 2-.2 3.5-.6 5"/><path d="M8 9a4 4 0 0 1 8 0c0 4 1 6 2 8"/></svg></span>
+      Enable fingerprint sign-in on this device
+    </button>
+
+    <button id="logoutBtn" class="btn btn-primary" style="margin-top:14px;background:transparent;border:1px solid var(--panel-border);color:var(--ink);">Log out</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
